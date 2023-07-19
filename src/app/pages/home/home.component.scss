@@ -1,0 +1,7 @@
+#container{
+    height: calc(100vh - 110px);
+    display: grid;
+    /*Estoy diciendo que tengo 2,2 unidades fraccionarias para dividir, 
+    de eso a uno le doy 1,2 a una parte y 1 a otro*/
+    grid-template-columns: 1.2fr 1fr;
+}
