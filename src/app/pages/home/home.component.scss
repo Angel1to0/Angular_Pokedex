@@ -39,4 +39,13 @@ app-foto-pokemon{
     display: flex;
     flex-direction: column;
     gap: 5px;
+
+    /*Scroll para que se genere una barra de scroll en el contenedor de tarjetas*/
+    max-height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#spinner{
+    max-height: 50px;
 }
