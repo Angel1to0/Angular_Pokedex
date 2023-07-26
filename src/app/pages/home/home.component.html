@@ -1,14 +1,25 @@
 <main id="container">
-    <!--Como solo vamos a tener una sola ventana de imagen de pokemon
+  <app-detalle [pokemon]="pokemonSeleccionado"
+  (clicked)="cambiarEstadoDetalle()"
+  [abierto]="detalle"
+  [ngClass]="{abierto: detalle}"> </app-detalle>
+  <!--Como solo vamos a tener una sola ventana de imagen de pokemon
     mandamos a llamar al componente una sola vez-->
-    <app-foto-pokemon
-    [pokemon]="pokemonSeleccionado"></app-foto-pokemon>
-    <!--Un contenedor para contener todas las tarjetas del pokemon-->
-    <div id="tarjetaContainer" #tarjetas (scroll)="onScroll($event)">
-        <app-tarjeta-pokemon *ngFor="let pokemon of listaPokemon"
-        [data]="pokemon"
-        [seleccionado]="pokemon.name === pokemonSeleccionado?.name"
-        (clickeado)="tarjetaClickeada($event)"></app-tarjeta-pokemon>
-        <img src="./../../../assets/img/spinner.svg" alt="cargando" id="spinner" *ngIf="cargando">
-    </div>
+  <app-foto-pokemon [pokemon]="pokemonSeleccionado"
+  [ngClass]="{abierto: detalle}"></app-foto-pokemon>
+  <!--Un contenedor para contener todas las tarjetas del pokemon-->
+  <div id="tarjetaContainer" #tarjetas (scroll)="onScroll($event)">
+    <app-tarjeta-pokemon
+      *ngFor="let pokemon of listaPokemon"
+      [data]="pokemon"
+      [seleccionado]="pokemon.name === pokemonSeleccionado?.name"
+      (clickeado)="tarjetaClickeada($event)"
+    ></app-tarjeta-pokemon>
+    <img
+      src="./../../../assets/img/spinner.svg"
+      alt="cargando"
+      id="spinner"
+      *ngIf="cargando"
+    />
+  </div>
 </main>

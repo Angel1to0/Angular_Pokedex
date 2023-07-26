@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   pagina: number = 1;
   cargando: boolean = false;
   pokemonSeleccionado?:Pokemon;
+  detalle:boolean = false;
 
   //Esta funcion se ejecuta cuando el componente se carga por primera vez
   ngOnInit(): void {
@@ -54,6 +55,15 @@ export class HomeComponent implements OnInit {
   }
 
   async tarjetaClickeada(id:string){
+    if(this.pokemonSeleccionado && id=== this.pokemonSeleccionado?.id.toString()){
+      return this.cambiarEstadoDetalle();
+    }
     this.pokemonSeleccionado = await this.pokemonService.getById(id);
+  }
+
+  cambiarEstadoDetalle(){
+    if(this.pokemonSeleccionado){
+      this.detalle = !this.detalle;
+    }
   }
 }
